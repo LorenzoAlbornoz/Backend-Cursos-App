@@ -1,5 +1,5 @@
 const { createCategory,  getAllCategories } = require("../controllers/categoriaControllers")
-const { getAllCuorses, createCourse, getCourseByID, deleteCourse } = require("../controllers/cursoControllers")
+const { getAllCuorses, createCourse, deleteCourse, updateCourse } = require("../controllers/cursoControllers")
 const { getAllUsers, register, changeToAdmin, getUserByID, deleteUser, login, updateUser } = require("../controllers/userControllers")
 const authenticateAdmin = require("../middlewares/authAdmin")
 const authenticateUser = require("../middlewares/authUser")
@@ -24,8 +24,9 @@ router.post("/categoria",  authenticateAdmin, createCategory)
 //Cursos Route
 router.get("/cursos", getAllCuorses)
 router.post("/curso",  authenticateAdmin, upload.single("imagen"), createCourse)
-router.get("/curso/:id",  authenticateAdmin, getCourseByID)
 router.delete("/curso/:id", authenticateAdmin, deleteCourse)
+router.put("/curso/:id",  authenticateAdmin, updateCourse)
+
 
 // exportamos el router
 module.exports = router

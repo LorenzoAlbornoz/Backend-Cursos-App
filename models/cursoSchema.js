@@ -3,24 +3,19 @@ const Categoria = require("./categoriaSchema");
 
 const cursoSchema = new mongoose.Schema({
     title: {
-        type: String, 
-        require: true
+        type: String
     },
     imagen:{
-        type: String,
-        require: true,
+        type: String
     },
     detalle:{
-        type: String,
-        require: true,
+        type: String
     },
     video: {
-        type:String,
-        require: true
+        type:String
     },
     mentor: {
-        type:String,
-        require:true
+        type:String
     },
     img_mentor: {
         type:String,

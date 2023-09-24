@@ -123,7 +123,7 @@ const login = async (req, res) => {
     // firma, recibe tres parametros
     const token = jwt.sign(payload, secret, {
       algorithm: process.env.JWT_ALGORITHM,
-      expiresIn: "1h"
+      expiresIn: "12h"
     });
     return res.status(200).json({
       mensaje: "Inicio de sesión exitoso",

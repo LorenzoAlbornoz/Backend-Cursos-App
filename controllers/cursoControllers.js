@@ -126,23 +126,17 @@ const deleteCourse = async (req, res) => {
 
 const updateCourse = async (req, res) => {
     const { id } = req.params;
-    const { title, imagen, detalle, video, mentor, img_mentor, categoria } = req.body
+    const { title, detalle, video, mentor, img_mentor, categoria } = req.body
     try {
-      if (!mongoose.isValidObjectId(id)) {
-        return res.status(400).json({
-          mensaje: "Id inválido",
-          status: 400,
-        });
-      }
-      // es un metodo que recibe 3 parametros, el primero el id, el segundo un objeto y el tercero un new: true, todo lo que hace el update lo guarda en una base y remplaza los datos ya creados o usuarios ya creados. nos aseguramos de que no se genere un usuario nuevo y que se guarde correctamente en la base.
-
-    const curso = await Curso.findByIdAndUpdate(
-      id,
-        ...req.body,
-      { new: true }
-    );
-  
-    if (!user) {
+    const curso = await Curso.findByIdAndUpdate( id,{
+        title,
+        detalle,
+        video,
+        mentor,
+        img_mentor,
+        categoria
+    }, { new: true });
+    if (!curso) {
       return res.status(404).json({
         mensaje: "Curso no encontrado",
         status: 404
